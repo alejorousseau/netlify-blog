@@ -1,0 +1,28 @@
+backend:
+  name: github
+  # specify your github repo
+  repo: alejorousseau/netlify-blog
+
+  # lets store all changes related to our publishing activity in a corresponding git-branch
+  branch: publishing
+# specify our media storage folder (for images)
+media_folder: content/assets
+# specify path to stored media in PUBLISHED website
+public_folder: ../assets # (src for uploaded images will start 'assets/')
+# initialize our collections
+collections:
+  # mine collection called 'News'
+  - name: news
+    label: News
+    # folder to store news articles at
+    folder: content/news
+    # allow user to create new articles
+    create: true
+    # slug
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # {{slug}} - by default is a url-friendly version of 'title' field below
+    # fields for each news article
+    fields:
+      - { name: title, label: Title }
+      - { name: excerpt, label: Excerpt }
+      - { name: body, label: Body, widget: markdown }
+      - { name: date, label: Date, widget: datetime }
